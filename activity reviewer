@@ -1,0 +1,252 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    public partial class ACTIVITY3 : Form
+    {
+        public ACTIVITY3()
+        {
+            InitializeComponent();
+        }
+
+        //double units;
+        double tuition;
+        double MED;
+        double ID;
+        double STUDDEV;
+        double TESTFEE;
+        double SPEECH;
+        double ITSTUD;
+        double NONIT;
+        double MISC;
+        double subtotal;
+        double total;
+        double change;
+
+        private void ACTIVITY3_Load(object sender, EventArgs e)
+        {
+
+            cbocollege.Items.Add("College of Accountancy");
+            cbocollege.Items.Add("College of Business");
+            cbocollege.Items.Add("College of Computer Studies");
+
+            cbomode.Items.Add("Full");
+            cbomode.Items.Add("Partial");
+
+        }
+
+        private void cbocollege_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
+
+            if (cbocollege.Text == "College of Accountancy")
+            {
+                cbocourse.Text = "";
+                cbocourse.Items.Clear();
+                cbocourse.Items.Add("Bachelor of Science in Accountancy");
+            }
+            else if (cbocollege.Text == "College of Business")
+            {
+                cbocourse.Text = "";
+                cbocourse.Items.Clear();
+                cbocourse.Items.Add("Bachelore of Science in Business Administration");
+                cbocourse.Items.Add("Bachelore of Science in Office Administration");
+            }
+            else if (cbocollege.Text == "College of Computer Studies")
+            {
+                cbocourse.Text = "";
+                cbocourse.Items.Clear();
+                cbocourse.Items.Add("Bachelor of Science in Information Technology");
+                cbocourse.Items.Add("Bachelor of Science in Information Systems");
+            }
+
+        }
+
+        private void txtunits_TextChanged(object sender, EventArgs e)
+        {
+
+            //units = Convert.ToDouble(txtunits.Text);
+            if (txtunits.Text == "")
+            {
+
+                txttuition.Text = "0.00";
+            }
+            else
+            {
+                tuition = Convert.ToDouble(txtunits.Text) * 100;
+                txttuition.Text = string.Format("{0:#,###,##0.00}", tuition);
+            }
+    
+        }
+
+        private void chkmed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkmed.Checked == true)
+            {
+                MED = 50;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                MED = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void chkid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkid.Checked == true)
+            {
+                ID = 70;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                ID = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void chkstud_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkstud.Checked == true)
+            {
+                STUDDEV = 30;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                STUDDEV = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void chktest_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chktest.Checked == true)
+            {
+                TESTFEE = 20;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                TESTFEE = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void chkspeech_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkspeech.Checked == true)
+            {
+                SPEECH = 30;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                SPEECH = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void chkcomp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkcomp.Checked == true)
+            {
+                rbtitstud.Enabled = true;
+                rbtnonit.Enabled = true;
+            }
+            else
+            {
+                rbtitstud.Checked = false;
+                rbtnonit.Checked = false;
+                rbtitstud.Enabled = false;
+                rbtnonit.Enabled = false;
+            }
+        }
+
+        private void rbtitstud_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtitstud.Checked == true)
+            {
+                ITSTUD = 500;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                ITSTUD = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void rbtnonit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnonit.Checked == true)
+            {
+                NONIT = 300;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+            else
+            {
+                NONIT = 0;
+                MISC = MED + ID + STUDDEV + TESTFEE + SPEECH + ITSTUD + NONIT;
+                txtmisc.Text = string.Format("{0:#,###,##0.00}", MISC);
+            }
+        }
+
+        private void btncompute_Click(object sender, EventArgs e)
+        {
+            subtotal = tuition + MISC;
+            txtsub.Text = string.Format("{0:#,###,##0.00}", subtotal);
+        }
+
+        private void cbomode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbomode.Text == "Full")
+            {
+                total = MISC + tuition;
+                txttotal.Text = string.Format("{0:#,###,##0.00}", total);
+            }
+            else if (cbomode.Text == "Partial")
+            {
+                total = tuition * 0.75 + MISC;
+                txttotal.Text = string.Format("{0:#,###,##0.00}", total);
+            }
+        }
+
+        private void txtpayment_TextChanged(object sender, EventArgs e)
+        {
+            if (txtpayment.Text == "")
+            {
+                txtchange.Text = "0.00";
+            }
+            else
+            {
+                change = Convert.ToDouble(txtpayment.Text) - total;
+                txtchange.Text = string.Format("{0:#,###,##0.00}", change);
+            }
+        }
+    }
+}
