@@ -236,6 +236,8 @@ namespace WindowsFormsApplication1
             }
         }
 
+        //this is a comment
+
         private void txtpayment_TextChanged(object sender, EventArgs e)
         {
             if (txtpayment.Text == "")
